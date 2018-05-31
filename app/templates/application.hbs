@@ -1,1 +1,15 @@
+<header>
+  {{#with-anything
+    user="service:user"
+    session="service:session"
+    as |_|
+  }}
+    {{#if _.session.isAuthenticated}}
+      Hi {{_.user.name}}.
+      <button {{action (call-with _.session 'logout')}}>logout</button>
+    {{else}}
+      <button {{action (call-with _.session 'login')}}>login</button>
+    {{/if}}
+  {{/with-anything}}
+</header>
 {{outlet}}

@@ -7,5 +7,9 @@ export default Service.extend({
     message = message || 'you will be logged out now';
     alert(message);
     this.set('isAuthenticated', false);
+  },
+
+  login() {
+    this.set('isAuthenticated', true);
   }
 });
