@@ -1,15 +1,22 @@
-<header>
-  {{#with-anything
-    user="service:user"
-    session="service:session"
-    as |_|
-  }}
-    {{#if _.session.isAuthenticated}}
-      Hi {{_.user.name}}.
-      <button {{action (call-with _.session 'logout')}}>logout</button>
-    {{else}}
-      <button {{action (call-with _.session 'login')}}>login</button>
-    {{/if}}
-  {{/with-anything}}
-</header>
+{{paper-toaster}}
+
+{{#with-anything user="service:user" session="service:session" as |_|}}
+  {{#paper-toolbar}}
+    {{#paper-toolbar-tools}}
+        {{#if _.session.isAuthenticated}}
+          <h1>Hi {{_.user.name}}</h1>
+          <span class="flex"></span>
+          {{#paper-button onClick=(action (call-with _.session 'logout'))}}
+            Logout
+          {{/paper-button}}
+        {{else}}
+          <span class="flex"></span>
+          {{#paper-button onClick=(action (call-with _.session 'login'))}}
+            Login
+          {{/paper-button}}
+        {{/if}}
+    {{/paper-toolbar-tools}}
+  {{/paper-toolbar}}
+{{/with-anything}}
+
 {{outlet}}
