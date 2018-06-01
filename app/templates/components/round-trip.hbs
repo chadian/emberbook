@@ -1,0 +1,11 @@
+{{yield (hash
+    model=resolved
+    state=trip.state
+    error=error
+    isFailure=isFailure
+    isSuccessful=trip.isIdle
+    isLoading=trip.isRunning
+    task=trip
+    refresh=(action startTrip)
+  )
+}}
