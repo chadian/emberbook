@@ -1,0 +1,11 @@
+{{#paper-card as |card|}}
+  {{#card.title as |title|}}
+    {{#title.text as |text|}}
+      {{#text.headline}}{{friend.name}}{{/text.headline}}
+      <img width="250" src={{concat "https://www.emberjs.com/" friend.image}} />
+    {{/title.text}}
+  {{/card.title}}
+  {{#card.actions}}
+    {{#paper-button raised=true primary=true}}Add to Favourites{{/paper-button}}
+  {{/card.actions}}
+{{/paper-card}}
