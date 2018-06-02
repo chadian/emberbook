@@ -1,0 +1,12 @@
+
+{{#if loadTask.isRunning}}
+  {{#traffic-cop timeout=timeout as |minimumTimeFinished|}}
+    {{#if minimumTimeFinished}}
+      {{yield _foreverPromise}}
+    {{else}}
+      {{yield warpedPromise}}
+    {{/if}}
+  {{/traffic-cop}}
+{{else}}
+  {{yield warpedPromise}}
+{{/if}}
