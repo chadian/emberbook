@@ -6,12 +6,12 @@
         {{#if _.session.isAuthenticated}}
           <h1>Hi {{_.user.name}}</h1>
           <span class="flex"></span>
-          {{#paper-button onClick=(action (call-with _.session 'logout'))}}
+          {{#paper-button onClick=(action (bind _.session 'logout'))}}
             Logout
           {{/paper-button}}
         {{else}}
           <span class="flex"></span>
-          {{#paper-button onClick=(action (call-with _.session 'login'))}}
+          {{#paper-button onClick=(action (bind _.session 'login'))}}
             Login
           {{/paper-button}}
         {{/if}}

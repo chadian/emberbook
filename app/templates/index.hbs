@@ -18,7 +18,7 @@
 
     <br><br>
     When you're ready to leave.
-    <button {{action (call-with _.session 'logout' (concat 'Good bye for now! from ' _.router.currentURL))}}>
+    <button {{action (bind _.session 'logout' (concat 'Good bye for now! from ' _.router.currentURL))}}>
       Good Bye
     </button>
   {{else}}
