@@ -2077,6 +2077,13 @@ ember-ajax@^3.0.0:
   dependencies:
     ember-cli-babel "^6.6.0"
 
+ember-assign-polyfill@^2.0.1:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/ember-assign-polyfill/-/ember-assign-polyfill-2.2.0.tgz#7953836e5ccd4da05b2493423d3efc00df80ca74"
+  dependencies:
+    ember-cli-babel "^6.8.2"
+    ember-cli-version-checker "^2.0.0"
+
 ember-basic-dropdown@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/ember-basic-dropdown/-/ember-basic-dropdown-1.0.0.tgz#bbafcaab986ba86dfe8d02b0f8529984229bd738"
@@ -2506,12 +2513,25 @@ ember-export-application-global@^2.0.0:
   dependencies:
     ember-cli-babel "^6.0.0-beta.7"
 
+ember-factory-for-polyfill@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/ember-factory-for-polyfill/-/ember-factory-for-polyfill-1.3.1.tgz#b446ed64916d293c847a4955240eb2c993b86eae"
+  dependencies:
+    ember-cli-version-checker "^2.1.0"
+
 ember-get-config@^0.2.4:
   version "0.2.4"
   resolved "https://registry.yarnpkg.com/ember-get-config/-/ember-get-config-0.2.4.tgz#118492a2a03d73e46004ed777928942021fe1ecd"
   dependencies:
     broccoli-file-creator "^1.1.1"
     ember-cli-babel "^6.3.0"
+
+ember-getowner-polyfill@^2.0.1:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/ember-getowner-polyfill/-/ember-getowner-polyfill-2.2.0.tgz#38e7dccbcac69d5ec694000329ec0b2be651d2b2"
+  dependencies:
+    ember-cli-version-checker "^2.1.0"
+    ember-factory-for-polyfill "^1.3.1"
 
 ember-inflector@^2.0.0:
   version "2.3.0"
@@ -2572,6 +2592,14 @@ ember-paper@^1.0.0-beta.7:
     propagating-hammerjs "^1.4.6"
     resolve "^1.3.3"
     virtual-each "~0.6.0"
+
+ember-parachute@^0.3.7:
+  version "0.3.7"
+  resolved "https://registry.yarnpkg.com/ember-parachute/-/ember-parachute-0.3.7.tgz#741e435210d4cd6e60bdf6956fd784d14751f20c"
+  dependencies:
+    ember-assign-polyfill "^2.0.1"
+    ember-cli-babel "^6.0.0"
+    ember-getowner-polyfill "^2.0.1"
 
 ember-power-select@^2.0.0:
   version "2.0.2"
