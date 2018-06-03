@@ -2,8 +2,8 @@
   {{#load-warp threshold=_warpThreshold model=model as |warpedModel|}}
     {{#round-trip model=warpedModel as |__|}}
       {{friends-pagination
-        onNextClick=(action goToPage (add currentPage 1))
-        onPreviousClick=(action goToPage (sub currentPage 1))
+        onNextClick=(action goToPage (add page 1))
+        onPreviousClick=(action goToPage (sub page 1))
       }}
       {{#unless __.isLoading}}
         {{friends-list model=__.model onDetailsClick=(action 'transitionToFriend')}}

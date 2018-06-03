@@ -4,23 +4,38 @@ import { inject as service } from '@ember/service';
 const FIRST_PAGE = 1;
 const DEFAULT_PAGE_TO_LOAD = FIRST_PAGE;
 
-export default Controller.extend({
+import QueryParams from "ember-parachute";
+
+export const FriendsQueryParams = new QueryParams({
+  page: {
+    defaultValue: DEFAULT_PAGE_TO_LOAD,
+    refresh: true,
+    replace: true
+  }
+});
+
+export default Controller.extend(FriendsQueryParams.Mixin, {
   friends: service(),
 
-  currentPage: null,
+  setup({ queryParams }) {
+    this.fetchModel(queryParams.page);
+  },
 
-  init() {
-    this._super();
-    this.goToPage(DEFAULT_PAGE_TO_LOAD);
+  queryParamsDidChange({ shouldRefresh, queryParams}) {
+    if (shouldRefresh) {
+      this.fetchModel(queryParams.page);
+    }
   },
 
   model: null,
+  fetchModel(page) {
+    return this.set("model", this.get("friends").fetchFriendsPage(page));
+  },
 
   goToPage(page) {
     if (page <= FIRST_PAGE) {
       page = FIRST_PAGE;
     }
-    this.set('currentPage', page);
-    return this.set("model", this.get("friends").fetchFriendsPage(page));
+    this.set("page", page);
   }
 });
