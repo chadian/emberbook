@@ -1,0 +1,31 @@
+{{#with-anything friends="service:friends" as |_|}}
+  {{#paper-toolbar}}
+    <span class="flex"></span>
+    {{#paper-toolbar-tools}}
+      <h1>Network Throttling</h1>
+      <div class="layout flex-25 layout-align-center-center">
+        <span>from {{_.friends.responseTimeLower}}ms</span>
+      </div>
+      {{paper-slider
+        class="flex"
+        min=0
+        max=4000
+        step=50
+        value=_.friends.responseTimeLower
+        onChange=(action (mut _.friends.responseTimeLower))
+      }}
+
+      <div class="layout flex-25 layout-align-center-center">
+        <span>to {{_.friends.responseTimeUpper}}ms</span>
+      </div>
+      {{paper-slider
+        class="flex"
+        min=0
+        max=4000
+        step=50
+        value=_.friends.responseTimeUpper
+        onChange=(action (mut _.friends.responseTimeUpper))
+      }}
+    {{/paper-toolbar-tools}}
+  {{/paper-toolbar}}
+{{/with-anything}}
