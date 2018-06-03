@@ -1,0 +1,27 @@
+{{#with-anything session="service:session" router="router:main" friends="service:friends" as |_|}}
+  {{#load-warp threshold=_warpThreshold model=model as |warpedModel|}}
+    {{#round-trip model=warpedModel as |__|}}
+      {{friends-pagination
+        onNextClick=(action goToPage (add currentPage 1))
+        onPreviousClick=(action goToPage (sub currentPage 1))
+      }}
+      {{#unless __.isLoading}}
+        {{friends-list model=__.model}}
+      {{else}}
+        {{partial "loading"}}
+      {{/unless}}
+    {{/round-trip}}
+  {{/load-warp}}
+
+  {{#network-throttle as |__|}}
+    {{#paper-button raised=true onClick=(action (bind _.friends '_clearCache'))}}
+      {{paper-icon "delete_forever" size=20}} Clear Cache
+    {{/paper-button}}
+    {{#paper-checkbox value=_.friends._useCache onChange=(action (mut _.friends._useCache))}}
+      Use Cache {{value1}}
+    {{/paper-checkbox}}
+    {{__.throttle}}
+    {{__.warp threshold=(mut _warpThreshold)}}
+  {{/network-throttle}}
+
+{{/with-anything}}

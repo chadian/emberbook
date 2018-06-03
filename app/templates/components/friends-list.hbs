@@ -1,0 +1,11 @@
+<div class="layout-column layout-align-center-center">
+  <div class="layout-row layout-wrap" style="max-width: 950px;">
+    {{#each model as |friend|}}
+      {{friend-card
+        friend=friend
+        class="flex flex-50"
+        onDetailsClick=(action (bind _.router "transitionTo" "index"))
+      }}
+    {{/each}}
+  </div>
+</div>

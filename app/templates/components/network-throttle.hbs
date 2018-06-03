@@ -1,0 +1,14 @@
+{{#paper-button raised=true primary=true fab=true onClick=(action 'toggleShown')}}
+  {{paper-icon "settings_system_daydream" size=30}}
+{{/paper-button}}
+
+{{#if isShown}}
+  {{#if (has-block)}}
+    {{yield (hash
+      throttle=(component "network-throttle/shown")
+      warp=(component "warp-threshold")
+    )}}
+  {{else}}
+    {{network-throttle/shown}}
+  {{/if}}
+{{/if}}
