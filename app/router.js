@@ -9,6 +9,7 @@ const Router = EmberRouter.extend({
 Router.map(function() {
   this.route('friends');
   this.route('classical-friends');
+  this.route('friends-plus');
 });
 
 export default Router;
