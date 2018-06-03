@@ -1,9 +1,17 @@
-{{#with-anything friends="service:friends" session="service:session" as |_|}}
-  {{#round-trip model=(call _.friends "fetchFriends") as |_|}}
-    <div class="layout-row layout-xs-column">
-      <div class="layout-colum flex-xs flex-gt-xs-35" style="margin: auto;">
-        {{#each _.model as |friend|}}
-          {{friend-card friend=friend}}
+{{#with-anything session="service:session" router="router:main" as |_|}}
+  {{#round-trip model=model as |__|}}
+    <div class="layout-column layout-align-center-center">
+      {{#paper-button accent=true raised=true onClick=(action goToPage (sub currentPage 1))}}Previous{{/paper-button}}
+      {{#paper-button accent=true raised=true onClick=(action goToPage (add currentPage 1))}}
+        Next
+      {{/paper-button}}
+      <div class="layout-row layout-wrap" style="max-width: 950px;">
+        {{#each __.model as |friend|}}
+          {{friend-card
+            friend=friend
+            class="flex flex-50"
+            onDetailsClick=(action (bind _.router "transitionTo" "index"))
+          }}
         {{/each}}
       </div>
     </div>
