@@ -6,7 +6,9 @@ export default Component.extend({
   model: null,
   resolved: null,
   cached: null,
-  timeout: 0,
+  threshold: 0,
+
+  _cachedMode: null,
 
   init() {
     this._super(...arguments);
@@ -18,15 +20,17 @@ export default Component.extend({
   },
 
   didReceiveAttrs() {
-    this.load();
-    this.rerender();
+    if (this.get('model') !== this.get('_cachedModel')) {
+      this.set("_cachedModel", this.get("model"));
+      this.load();
+    }
   },
 
   _foreverPromise: new Promise(() => {}),
 
-  warpedPromise: computed('resolved', 'cached', function() {
+  warpedPromise: computed('resolved', '_cachedModel', function() {
     let resolved = this.get('resolved');
-    let cached = this.get('cached');
+    let cached = this.get('_cachedModel');
 
     return Promise.resolve(resolved || cached);
   }),
@@ -36,7 +40,7 @@ export default Component.extend({
   },
 
   loadTask: task(function * () {
-    let model = this.get('model');
+    let model = this.get('_cachedModel');
     let resolved = yield Promise.resolve(model);
 
     this.set('resolved', resolved);

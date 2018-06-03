@@ -1,6 +1,5 @@
-
 {{#if loadTask.isRunning}}
-  {{#traffic-cop timeout=timeout as |minimumTimeFinished|}}
+  {{#traffic-cop timeout=threshold as |minimumTimeFinished|}}
     {{#if minimumTimeFinished}}
       {{yield _foreverPromise}}
     {{else}}
