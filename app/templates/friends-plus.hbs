@@ -1,4 +1,4 @@
-{{#with-anything session="service:session" router="router:main" friends="service:friends" as |_|}}
+{{#with-anything session="service:session" friends="service:friends" as |_|}}
   {{#load-warp threshold=_warpThreshold model=model as |warpedModel|}}
     {{#round-trip model=warpedModel as |__|}}
       {{friends-pagination

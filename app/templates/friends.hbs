@@ -1,4 +1,4 @@
-{{#with-anything session="service:session" router="router:main" as |_|}}
+{{#with-anything session="service:session" as |_|}}
   {{#round-trip model=model as |__|}}
     {{friends-pagination
       onNextClick=(action goToPage (add currentPage 1))
