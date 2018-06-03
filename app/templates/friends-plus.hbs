@@ -1,5 +1,4 @@
 {{#with-anything session="service:session" router="router:main" as |_|}}
-  {{_warpThreshold}}
   {{#load-warp threshold=_warpThreshold model=model as |warpedModel|}}
     {{#round-trip model=warpedModel as |__|}}
       {{friends-pagination
@@ -15,20 +14,4 @@
   {{/load-warp}}
 {{/with-anything}}
 
-{{#paper-toolbar}}
-  <span class="flex"></span>
-  {{#paper-toolbar-tools}}
-    <h1>Load Warp Theshold</h1>
-    <div class="layout flex-25 layout-align-center-center">
-      <span>at {{_warpThreshold}}ms</span>
-    </div>
-    {{paper-slider
-      class="flex"
-      min=0
-      max=1000
-      step=50
-      value=_warpThreshold
-      onChange=(action (mut _warpThreshold))
-    }}
-  {{/paper-toolbar-tools}}
-{{/paper-toolbar}}
+{{warp-threshold threshold=(mut _warpThreshold)}}
