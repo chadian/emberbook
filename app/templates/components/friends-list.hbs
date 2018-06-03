@@ -4,8 +4,10 @@
       {{friend-card
         friend=friend
         class="flex flex-50"
-        onDetailsClick=(action (bind _.router "transitionTo" "index"))
+        onDetailsClick=(action onDetailsClick friend.id)
       }}
     {{/each}}
   </div>
 </div>
+
+{{!-- onDetailsClick=(action (bind _.router "transitionTo" "index")) --}}

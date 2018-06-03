@@ -6,7 +6,9 @@
     {{/title.text}}
   {{/card.title}}
   {{#card.actions}}
-    {{#paper-button raised=true primary=true onClick=(action onDetailsClick)}}Details{{/paper-button}}
+    {{#paper-button raised=true primary=true onClick=(action 'onClick')}}
+      Details {{if isLoading "LOADING ..."}}
+    {{/paper-button}}
     {{#paper-button raised=true primary=true}}Add to Favourites{{/paper-button}}
   {{/card.actions}}
 {{/paper-card}}

@@ -6,7 +6,7 @@
         onPreviousClick=(action goToPage (sub currentPage 1))
       }}
       {{#unless __.isLoading}}
-        {{friends-list model=__.model}}
+        {{friends-list model=__.model onDetailsClick=(action 'transitionToFriend')}}
       {{else}}
         {{partial "loading"}}
       {{/unless}}
