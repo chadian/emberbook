@@ -1,6 +1,6 @@
 {{paper-toaster}}
 
-{{#with-anything user="service:user" session="service:session" as |_|}}
+{{#with-anything user="service:user" session="service:session" friends="service:friends" as |_|}}
   {{#paper-toolbar}}
     {{#paper-toolbar-tools}}
         {{#if _.session.isAuthenticated}}
@@ -17,6 +17,36 @@
         {{/if}}
     {{/paper-toolbar-tools}}
   {{/paper-toolbar}}
-{{/with-anything}}
 
-{{outlet}}
+  {{outlet}}
+
+  {{#paper-toolbar}}
+    <span class="flex"></span>
+    {{#paper-toolbar-tools}}
+      <h1>Network Throttling</h1>
+      <div class="layout flex-25 layout-align-center-center">
+        <span>from {{_.friends.responseTimeLower}}ms</span>
+      </div>
+      {{paper-slider
+        class="flex"
+        min=0
+        max=3000
+        step=50
+        value=_.friends.responseTimeLower
+        onChange=(action (mut _.friends.responseTimeLower))
+      }}
+
+      <div class="layout flex-25 layout-align-center-center">
+        <span>to {{_.friends.responseTimeUpper}}ms</span>
+      </div>
+      {{paper-slider
+        class="flex"
+        min=0
+        max=3000
+        step=50
+        value=_.friends.responseTimeUpper
+        onChange=(action (mut _.friends.responseTimeUpper))
+      }}
+    {{/paper-toolbar-tools}}
+  {{/paper-toolbar}}
+{{/with-anything}}
