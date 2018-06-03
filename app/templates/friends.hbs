@@ -1,5 +1,13 @@
 {{#with-anything session="service:session" router="router:main" as |_|}}
   {{#round-trip model=model as |__|}}
-    {{friends-list model=__.model currentPage=currentPage goToPage=(action goToPage)}}
+    {{friends-pagination
+      onNextClick=(action goToPage (add currentPage 1))
+      onPreviousClick=(action goToPage (sub currentPage 1))
+    }}
+    {{#unless __.isLoading}}
+      {{friends-list model=__.model}}
+    {{else}}
+      {{partial "loading"}}
+    {{/unless}}
   {{/round-trip}}
 {{/with-anything}}

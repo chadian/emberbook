@@ -1,8 +1,4 @@
 <div class="layout-column layout-align-center-center">
-  {{#paper-button accent=true raised=true onClick=(action goToPage (sub currentPage 1))}}Previous{{/paper-button}}
-  {{#paper-button accent=true raised=true onClick=(action goToPage (add currentPage 1))}}
-    Next
-  {{/paper-button}}
   <div class="layout-row layout-wrap" style="max-width: 950px;">
     {{#each model as |friend|}}
       {{friend-card
