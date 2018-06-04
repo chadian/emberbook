@@ -5,11 +5,11 @@ import { inject as service } from '@ember/service';
 export default FriendsController.extend({
   _warpThreshold: 0,
   router: service(),
+  friends: service(),
 
   cacheThenTransition: task(function * (id) {
-    yield timeout(5000);
-    console.log('finally loaded', id);
-    this.get('router').transitionTo('index');
+    yield this.get('friends').fetchFriend(id);
+    this.get('router').transitionTo('friends-details', id);
   }).restartable(),
 
   actions: {
