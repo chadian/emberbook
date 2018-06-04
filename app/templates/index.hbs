@@ -3,24 +3,32 @@
   session="service:session"
   as |_|
 }}
-  {{#if _.session.isAuthenticated}}
-    <h1>Welcome {{_.user.name}}</h1>
-  {{else}}
-    <div class="layout-row layout-xs-column layout-align-center-center" style="margin-top: 25vh;">
-      <div class="layout-column flex-35">
-        {{#paper-card as |card|}}
-          {{#card.title as |title|}}
-            {{#title.text class="layout-align-center-center" as |text|}}
+
+<div class="layout-row layout-xs-column layout-align-center-center" style="margin-top: 10vh;">
+  <div class="layout-column flex-35">
+    {{#paper-card as |card|}}
+      {{#card.title as |title|}}
+        {{#title.text class="layout-align-center-center" as |text|}}
+
+          {{#if _.session.isAuthenticated}}
+
+              <h1>Welcome {{_.user.name}}</h1>
+              <img src="./zoey-profile.png" alt="profile photo" />
+
+          {{else}}
+
               <img src="./emberbook-medium.png" alt="logo" width="250" />
               <div style="padding: 1vh 0"></div>
               {{#paper-button raised=true primary=true onClick=(action (bind _.session 'login'))}}
                 Login
               {{/paper-button}}
 
-            {{/title.text}}
-          {{/card.title}}
-        {{/paper-card}}
-      </div>
-    </div>
-  {{/if}}
+          {{/if}}
+
+        {{/title.text}}
+      {{/card.title}}
+    {{/paper-card}}
+  </div>
+</div>
+
 {{/with-anything}}
