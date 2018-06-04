@@ -7,7 +7,10 @@
   {{/card.title}}
   {{#card.actions}}
     {{#paper-button raised=true primary=true onClick=(action 'onClick')}}
-      Details {{if isLoading "LOADING ..."}}
+      Details
+      {{#if isLoading}}
+        {{paper-progress-linear}}
+      {{/if}}
     {{/paper-button}}
     {{#paper-button raised=true primary=true}}Add to Favourites{{/paper-button}}
   {{/card.actions}}
