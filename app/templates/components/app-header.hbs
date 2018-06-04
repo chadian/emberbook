@@ -1,9 +1,30 @@
-{{#paper-toolbar}}
-  {{#paper-toolbar-tools}}
-    <h1>Hi {{username}}</h1>
-    <span class="flex"></span>
-    {{#paper-button onClick=(action onLogout)}}
-      Logout
-    {{/paper-button}}
-  {{/paper-toolbar-tools}}
-{{/paper-toolbar}}
+{{#with-anything router="router:main" as |_|}}
+  {{#paper-toolbar}}
+    {{#paper-toolbar-tools}}
+      <h1>Hallo {{username}}!</h1>
+      <span class="flex"></span>
+      {{#paper-button
+        raised=(eq _.router.currentRouteName "classical-friends")
+        onClick=(bind _.router "transitionTo" "classical-friends")
+      }}
+        Classical Friends
+      {{/paper-button}}
+      {{#paper-button
+        raised=(eq _.router.currentRouteName "friends")
+        onClick=(bind _.router "transitionTo" "friends")
+      }}
+        Friends
+      {{/paper-button}}
+      {{#paper-button
+        raised=(eq _.router.currentRouteName "friends-plus")
+        onClick=(bind _.router "transitionTo" "friends-plus")
+      }}
+        Friends Plus
+      {{/paper-button}}
+      <span class="flex"></span>
+      {{#paper-button onClick=(action onLogout)}}
+        Logout
+      {{/paper-button}}
+    {{/paper-toolbar-tools}}
+  {{/paper-toolbar}}
+{{/with-anything}}
