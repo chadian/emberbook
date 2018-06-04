@@ -10,5 +10,14 @@ export default Component.extend({
       const task = this.get('onDetailsClick')();
       this.set('loadingTask', task);
     }
+  },
+
+  willDestroy() {
+    this._super();
+    let loadingTask = this.get('loadingTask');
+
+    if (loadingTask && loadingTask.cancel) {
+      loadingTask.cancel();
+    }
   }
 });
