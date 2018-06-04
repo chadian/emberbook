@@ -5,19 +5,19 @@
       <span class="flex"></span>
       {{#paper-button
         raised=(eq _.router.currentRouteName "classical-friends")
-        onClick=(bind _.router "transitionTo" "classical-friends")
+        onClick=(bind _.router "transitionTo" "classical-friends" arity=1)
       }}
         Classical Friends
       {{/paper-button}}
       {{#paper-button
         raised=(eq _.router.currentRouteName "friends")
-        onClick=(bind _.router "transitionTo" "friends")
+        onClick=(bind _.router "transitionTo" "friends" arity=1)
       }}
         Friends
       {{/paper-button}}
       {{#paper-button
         raised=(eq _.router.currentRouteName "friends-plus")
-        onClick=(bind _.router "transitionTo" "friends-plus")
+        onClick=(bind _.router "transitionTo" "friends-plus" arity=1)
       }}
         Friends Plus
       {{/paper-button}}
