@@ -3,8 +3,6 @@ import { computed } from '@ember/object';
 import { timeout } from "ember-concurrency";
 import data from './friends/data';
 
-const DATA = data.map((data, i) => ({ ...data, id: i.toString(), favourite: false }));
-
 let _STORE = {};
 let useCache = false;
 function cache(fn) {
@@ -22,21 +20,49 @@ function cache(fn) {
   }
 }
 
-const fauxRequest = (value, lower=0, upper=1000) => timeout(
+let fauxRequest = (value, lower=0, upper=1000) => timeout(
   Math.floor(Math.random() * (upper - lower)) + lower
-).then(() => value);
+).then(() => console.log('faux request: ', value) || value);
+
+let chooseRandom = (array) => array[Math.floor(Math.random() * array.length)];
+let foods = ['butter chicken', 'pizza', 'pasta', 'döner', 'salad', 'lots of different cheeses'];
+let sports = ['running', 'swimming', 'cycling', 'soccer', 'tennis', 'basketball', 'baseball', 'long jump', 'hockey'];
+let interests = [
+  'opera',
+  'painting',
+  'sports',
+  'musicals',
+  'travelling',
+  'magic',
+  'design',
+  'politics',
+  'fashion',
+  'philanthropy',
+  'watching tv',
+  'watching movies',
+  'reading',
+  ''
+];
+const DATA = data.map((data, i) => ({
+  ...data,
+  id: i.toString(),
+  favourite: false,
+  favouriteFood: chooseRandom(foods),
+  sport: chooseRandom(sports),
+  interests: [ chooseRandom(interests), chooseRandom(interests), chooseRandom(interests) ]
+}));
 
 export default Service.extend({
   responseTimeLower: 500,
   responseTimeUpper: 1500,
 
-  fetchFriend(id) {
+  fetchFriend: cache(function(id) {
     let friend = DATA
       .filter(friend => friend.id === id)
       .pop();
 
     return fauxRequest(friend, this.get('responseTimeLower'), this.get('responseTimeUpper'));
-  },
+  }),
 
   fetchFriendsAll() {
     let friends = DATA.map(({ id, name, tags, image }) => ({ id, name, tags, image }));

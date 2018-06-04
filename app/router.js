@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('friends');
   this.route('classical-friends');
   this.route('friends-plus');
+  this.route('friends-details', { path: '/friends/:friend_id' });
 });
 
 export default Router;

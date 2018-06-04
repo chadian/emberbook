@@ -1,0 +1,70 @@
+{{#with-anything friends="service:friends" as |_|}}
+  {{#load-warp threshold=500 model=(call _.friends "fetchFriend" model.friend_id) as |warpedModel|}}
+    {{#round-trip model=warpedModel as |__|}}
+
+      {{#if __.isLoading}}
+
+        {{partial "loading"}}
+
+       {{else}}
+
+        <div class="layout-row layout-align-center-center">
+          {{#paper-card class="flex-40" as |card|}}
+            {{#paper-list class=""}}
+              {{#paper-item class="md-3-line"}}
+                <div class="md-list-item-text">
+                  <h1>{{__.model.name}}</h1>
+                  <img src={{concat "https://www.emberjs.com/" __.model.image}}>
+                </div>
+              {{/paper-item}}
+              {{paper-divider}}
+              {{#paper-item class="md-3-line"}}
+                <div class="md-list-item-text">
+                  <h2>Created</h2>
+                  {{__.model.created}}
+                </div>
+              {{/paper-item}}
+              {{paper-divider}}
+              {{#paper-item class="md-3-line"}}
+                <div class="md-list-item-text">
+                  <h2>Website</h2>
+                  <a href={{__.model.url}}>Link</a>
+                </div>
+              {{/paper-item}}
+              {{paper-divider}}
+              {{#paper-item class="md-3-line"}}
+                <div class="md-list-item-text">
+                  <h2>Tags</h2>
+                  {{paper-chips readOnly=true content=__.model.tags}}
+                </div>
+              {{/paper-item}}
+              {{paper-divider}}
+              {{#paper-item class="md-3-line"}}
+                <div class="md-list-item-text">
+                  <h2>Favourite Food</h2>
+                  {{__.model.favouriteFood}}
+                </div>
+              {{/paper-item}}
+              {{paper-divider}}
+              {{#paper-item class="md-3-line"}}
+                <div class="md-list-item-text">
+                  <h2>Interests</h2>
+                  {{paper-chips readOnly=true content=__.model.interests}}
+                </div>
+              {{/paper-item}}
+              {{paper-divider}}
+              {{#paper-item class="md-3-line"}}
+                <div class="md-list-item-text">
+                  <h2>Favourite Sport</h2>
+                  {{__.model.sport}}
+                </div>
+              {{/paper-item}}
+            {{/paper-list}}
+          {{/paper-card}}
+        </div>
+
+      {{/if}}
+
+    {{/round-trip}}
+  {{/load-warp}}
+{{/with-anything}}

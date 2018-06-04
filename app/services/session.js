@@ -6,7 +6,7 @@ export default Service.extend({
   paperToaster: service(),
 
   logout(message) {
-    message = message || 'you will be logged out now';
+    message = message || 'You are now logged out';
     this.get('paperToaster').show(message);
     this.set('isAuthenticated', false);
   },
