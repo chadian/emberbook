@@ -14,7 +14,7 @@
               {{#paper-item class="md-3-line"}}
                 <div class="md-list-item-text">
                   <h1>{{__.model.name}}</h1>
-                  <img src={{concat "https://www.emberjs.com/" __.model.image}}>
+                  <img style="display: block; margin: auto;" src={{concat "https://www.emberjs.com/" __.model.image}}>
                 </div>
               {{/paper-item}}
               {{paper-divider}}
@@ -24,13 +24,17 @@
                   {{__.model.created}}
                 </div>
               {{/paper-item}}
-              {{paper-divider}}
-              {{#paper-item class="md-3-line"}}
-                <div class="md-list-item-text">
-                  <h2>Website</h2>
-                  <a href={{__.model.url}}>Link</a>
-                </div>
-              {{/paper-item}}
+
+              {{#if __.model.url}}
+                {{paper-divider}}
+                {{#paper-item class="md-3-line"}}
+                  <div class="md-list-item-text">
+                    <h2>Website</h2>
+                    <a href={{__.model.url}}>Link</a>
+                  </div>
+                {{/paper-item}}
+              {{/if}}
+
               {{paper-divider}}
               {{#paper-item class="md-3-line"}}
                 <div class="md-list-item-text">
