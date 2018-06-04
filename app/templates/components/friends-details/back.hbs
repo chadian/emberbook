@@ -1,5 +1,3 @@
-{{#with-anything router="router:main" as |_|}}
-  {{#paper-button onClick=(bind _.router 'transitionTo' 'friends')}}
-
-  {{/paper-button}}
-{{/with-anything}}
+{{#paper-button raised=true onClick=(action 'historyBack')}}
+  Go Back
+{{/paper-button}}

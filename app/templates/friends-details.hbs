@@ -8,6 +8,7 @@
 
       {{else}}
 
+        {{to-elsewhere named="app-header-left" send=(component 'friends-details/back')}}
         {{to-elsewhere named="app-header-middle" send=__.model.name}}
 
         <div class="layout-row layout-align-center-center">

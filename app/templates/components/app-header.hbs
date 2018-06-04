@@ -2,7 +2,13 @@
   {{#paper-toolbar}}
     {{#paper-toolbar-tools}}
 
-      <h1>Hallo {{username}}!</h1>
+      {{#from-elsewhere name="app-header-left" as |content|}}
+        {{#if content}}
+          {{content}}
+        {{else}}
+          <h1>Hallo {{username}}!</h1>
+        {{/if}}
+      {{/from-elsewhere}}
 
       <span class="flex"></span>
 
