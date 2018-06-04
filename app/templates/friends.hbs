@@ -7,7 +7,7 @@
     {{#unless __.isLoading}}
       {{friends-list
         model=__.model
-        onDetailsClick=(action (bind _.router "transitionTo" "index"))
+        onDetailsClick=(action (bind _.router "transitionTo" "friends-details"))
       }}
     {{else}}
       {{partial "loading"}}

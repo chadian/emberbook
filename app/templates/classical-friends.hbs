@@ -2,4 +2,7 @@
   onNextClick=(action 'goToPage' (add currentPageNumber 1))
   onPreviousClick=(action 'goToPage' (sub currentPageNumber 1))
 }}
-{{friends-list model=model onDetailsClick=(action (bind _.router "transitionTo" "index"))}}
+{{friends-list
+  model=model
+  onDetailsClick=(action 'transitionToFriendsDetails')
+}}
