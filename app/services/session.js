@@ -2,7 +2,7 @@ import Service from '@ember/service';
 import { inject as service } from "@ember/service";
 
 export default Service.extend({
-  isAuthenticated: true,
+  isAuthenticated: false,
   paperToaster: service(),
 
   logout(message) {
