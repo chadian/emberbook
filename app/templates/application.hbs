@@ -1,6 +1,6 @@
 {{#with-anything user="service:user" session="service:session" router="router:main" as |_|}}
   {{#if _.session.isAuthenticated}}
-   {{app-header username=_.user.name onLogout=(action (pipe (bind _.session "logout") (bind _.router "transitionTo" "index")))}}
+   {{app-header username=_.user.name onLogout=(action (queue (bind _.session "logout" arity=0) (bind _.router "transitionTo" "index" arity=1)))}}
   {{/if}}
 {{/with-anything}}
 {{outlet}}

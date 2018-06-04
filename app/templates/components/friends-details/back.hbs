@@ -1,0 +1,5 @@
+{{#with-anything router="router:main" as |_|}}
+  {{#paper-button onClick=(bind _.router 'transitionTo' 'friends')}}
+
+  {{/paper-button}}
+{{/with-anything}}

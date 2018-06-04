@@ -6,7 +6,9 @@
 
         {{partial "loading"}}
 
-       {{else}}
+      {{else}}
+
+        {{to-elsewhere named="app-header-middle" send=__.model.name}}
 
         <div class="layout-row layout-align-center-center">
           {{#paper-card class="flex-40" as |card|}}
