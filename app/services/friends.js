@@ -41,7 +41,13 @@ let interests = [
   'watching tv',
   'watching movies',
   'reading',
-  ''
+  'ember.js',
+  'react',
+  'vue.js',
+  'jack johnson',
+  'concerts',
+  'performing arts',
+  'museums',
 ];
 const DATA = data.map((data, i) => ({
   ...data,
