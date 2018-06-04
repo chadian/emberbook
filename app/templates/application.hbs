@@ -1,4 +1,8 @@
-{{app-header}}
+{{#with-anything user="service:user" session="service:session" user="service:user" as |_|}}
+  {{#if _.session.isAuthenticated}}
+   {{app-header username=_.user.name onLogout=(action (bind _.session 'logout'))}}
+  {{/if}}
+{{/with-anything}}
 {{outlet}}
 
 {{!-- outlet for the toasters --}}

@@ -1,27 +1,26 @@
 {{#with-anything
   user="service:user"
   session="service:session"
-  config="service:config"
-  router="router:main"
   as |_|
 }}
   {{#if _.session.isAuthenticated}}
-    Hello {{_.user.name}}
-    You're currently at {{_.router.currentURL}},<br>
-    which is actually on the {{_.router.currentRouteName}} route.
-
-    {{#if _.user.isAdmin}}
-      <br><br><br>
-      Psst. You're an admin so I can let you in on a little secret.<br>
-      Your app's module prefix is: {{_.config.modulePrefix}}
-    {{/if}}
-
-    <br><br>
-    When you're ready to leave.
-    <button {{action (bind _.session 'logout' (concat 'Good bye for now! from ' _.router.currentURL))}}>
-      Good Bye
-    </button>
+    <h1>Welcome {{_.user.name}}</h1>
   {{else}}
-    Sorry, you're actually logged out.
+    <div class="layout-row layout-xs-column layout-align-center-center" style="margin-top: 25vh;">
+      <div class="layout-column flex-35">
+        {{#paper-card as |card|}}
+          {{#card.title as |title|}}
+            {{#title.text class="layout-align-center-center" as |text|}}
+              <img src="./emberbook-medium.png" alt="logo" width="250" />
+              <div style="padding: 1vh 0"></div>
+              {{#paper-button raised=true primary=true onClick=(action (bind _.session 'login'))}}
+                Login
+              {{/paper-button}}
+
+            {{/title.text}}
+          {{/card.title}}
+        {{/paper-card}}
+      </div>
+    </div>
   {{/if}}
 {{/with-anything}}
