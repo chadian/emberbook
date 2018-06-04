@@ -5,7 +5,10 @@
       onPreviousClick=(action goToPage (sub page 1))
     }}
     {{#unless __.isLoading}}
-      {{friends-list model=__.model onDetailsClick=(action (bind _.router "transitionTo" "index"))}}
+      {{friends-list
+        model=__.model
+        onDetailsClick=(action (bind _.router "transitionTo" "index"))
+      }}
     {{else}}
       {{partial "loading"}}
     {{/unless}}
