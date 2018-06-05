@@ -1,7 +1,12 @@
-# emberliners-data-flow
+# Berlin Ember.js Meetup slides & emberbook example application
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+This repository contains the slides and emberbook example app prepared
+for the [Berlin Ember.js Meetup](https://www.meetup.com/Ember-js-Berlin/), on [June 4, 2018](https://www.meetup.com/Ember-js-Berlin/events/250775329/).
+
+* [emberbook](https://chadian.github.io/emberbook) (live example application)
+* [Slides](https://cdn.rawgit.com/chadian/emberbook/244086dd/slides/index.html) (html)
+* [Slides](https://github.com/chadian/emberbook/blob/master/slides/data-flow-in-ember.pdf) (pdf, no animations)
+* [Slides](https://github.com/chadian/emberbook/raw/master/slides/data-flow-in-ember.key) (keynote)
 
 ## Prerequisites
 
